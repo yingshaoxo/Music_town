@@ -1,6 +1,10 @@
 {
     "Visitor": {
-        "music": [],
+        "music": [
+            {
+                "name": "\u6797\u5fd7\u8fbe - \u5b59\u609f\u7a7a.mp3"
+            }
+        ],
         "password": "Visitor"
     },
     "pea": {
