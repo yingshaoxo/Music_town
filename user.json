@@ -1,0 +1,35 @@
+{
+    "Visitor": {
+        "music": [],
+        "password": "Visitor"
+    },
+    "pea": {
+        "password": "pea"
+    },
+    "yingshaoxo": {
+        "music": [
+            {
+                "name": "\u4efb\u7d20\u6c50 - \u6211\u8981\u4f60.mp3"
+            },
+            {
+                "name": "Alan Walker Coldplay - Hymn For The Weekend \uff3bRemix\uff3d.mp3"
+            },
+            {
+                "name": "Cajsa Siik - Higher.mp3"
+            },
+            {
+                "name": "\u9648\u4e00\u53d1\u513f - \u7ae5\u8bdd\u9547.mp3"
+            },
+            {
+                "name": "\u672a\u6cef - Miss You.mp3"
+            },
+            {
+                "name": "Alan Walker - Sing Me to Sleep.mp3"
+            },
+            {
+                "name": "\u8bb8\u5d69 \u6d1b\u5929\u4f9d - \u6df1\u591c\u4e66\u5e97.mp3"
+            }
+        ],
+        "password": "1576570260"
+    }
+}

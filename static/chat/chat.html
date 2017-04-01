@@ -1,0 +1,56 @@
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="../static/chat/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="../static/chat/fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="../static/chat/fonts/vicons/vicons-font.css" />
+	<link rel="stylesheet" type="text/css" href="../static/chat/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="../static/chat/css/chat.css" />
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+	<div class="htmleaf-container">
+		<div class="content">
+			<div class="chat-window">
+				<div class="chat-messages">
+					<ol class="chat-messages-list">
+						<li class="chat-message chat-message-friend">
+							<div class="chat-message-bubble">
+								Hi~
+							</div>
+						</li>
+					</ol>
+				</div>
+				<div class="chat-input-bar">
+					<div class="chat-info-container">
+
+					</div>
+					<div class="chat-effect-container">
+						<div class="chat-effect-bar"></div>
+					</div>
+					<div class="chat-input-wrapper">
+					    <button class="chat-send">
+							<i class="icon icon-camera"></i>
+						</button>
+						<div class="chat-input" contenteditable></div>
+						<button class="chat-send">
+							<i class="fa fa-paper-plane"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800">
+		  <defs>
+		    <filter id="goo">
+		      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+		      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+		      <feComposite in="SourceGraphic" in2="goo" />
+		    </filter>
+		  </defs>
+		</svg>
+	</div>
+	<script src="../static/chat/js/jquery.min.js"></script>
+	<script src="../static/chat/js/TweenMax.min.js"></script>
+	<script src="../static/chat/js/chat.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
