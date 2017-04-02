@@ -147,10 +147,10 @@ def upload_file():
                 p.wait()
                 p.communicate()
                 p.kill()
+                os.remove(temp_name)
             except Exception as e:
                 print(e)
                 os.rename(temp_name, temp_name.replace('@w@', ''))
-            os.remove(temp_name)
             write_music(session.get('username'), filename)
             print('Uploaded a mp3')
             flash('Uploaded')

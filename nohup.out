@@ -1,12 +1,7 @@
-[2017-04-02 08:40:02 +0000] [16931] [INFO] Starting gunicorn 19.7.1
-[2017-04-02 08:40:02 +0000] [16931] [INFO] Listening at: http://0.0.0.0:80 (16931)
-[2017-04-02 08:40:02 +0000] [16931] [INFO] Using worker: sync
-[2017-04-02 08:40:02 +0000] [16936] [INFO] Booting worker with pid: 16936
-[2017-04-02 08:40:02 +0000] [16938] [INFO] Booting worker with pid: 16938
-[2017-04-02 08:40:02 +0000] [16939] [INFO] Booting worker with pid: 16939
-[2017-04-02 08:40:02 +0000] [16940] [INFO] Booting worker with pid: 16940
-[2017-04-02 08:41:11 +0000] [16931] [CRITICAL] WORKER TIMEOUT (pid:16939)
-[2017-04-02 08:41:11 +0000] [16939] [INFO] Worker exiting (pid: 16939)
-Uploaded a mp3
-[{'name': '马克西姆.姆尔维察 - Croatian Rhapsody.mp3'}, {'name': '许嵩 - 江湖.mp3'}]
-[2017-04-02 08:41:12 +0000] [16958] [INFO] Booting worker with pid: 16958
+[2017-04-02 09:04:15 +0000] [17495] [INFO] Starting gunicorn 19.7.1
+[2017-04-02 09:04:15 +0000] [17495] [INFO] Listening at: http://0.0.0.0:80 (17495)
+[2017-04-02 09:04:15 +0000] [17495] [INFO] Using worker: sync
+[2017-04-02 09:04:15 +0000] [17500] [INFO] Booting worker with pid: 17500
+[2017-04-02 09:04:15 +0000] [17501] [INFO] Booting worker with pid: 17501
+[2017-04-02 09:04:15 +0000] [17502] [INFO] Booting worker with pid: 17502
+[2017-04-02 09:04:15 +0000] [17503] [INFO] Booting worker with pid: 17503
