@@ -146,9 +146,11 @@ def upload_file():
                 p = subprocess.Popen(['ffmpeg -i "{name}" -ac 1 -ab 64k "{real_name}"'.format(name=temp_name, real_name=temp_name.replace('@w@', ''))], shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
                 p.wait()
                 p.communicate()
-                os.remove(temp_name)
-            except:
+                p.kill()
+            except Exception as e:
+                print(e)
                 os.rename(temp_name, temp_name.replace('@w@', ''))
+            os.remove(temp_name)
             write_music(session.get('username'), filename)
             print('Uploaded a mp3')
             flash('Uploaded')

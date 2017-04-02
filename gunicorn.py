@@ -3,6 +3,7 @@ import os
 
 
 commands = '''
+rm nohup.out
 pkill gunicorn
 sudo nohup gunicorn -b 0.0.0.0:80 -w 4 app:app &
 '''
