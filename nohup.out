@@ -1,7 +1,40 @@
-[2017-04-02 09:04:15 +0000] [17495] [INFO] Starting gunicorn 19.7.1
-[2017-04-02 09:04:15 +0000] [17495] [INFO] Listening at: http://0.0.0.0:80 (17495)
-[2017-04-02 09:04:15 +0000] [17495] [INFO] Using worker: sync
-[2017-04-02 09:04:15 +0000] [17500] [INFO] Booting worker with pid: 17500
-[2017-04-02 09:04:15 +0000] [17501] [INFO] Booting worker with pid: 17501
-[2017-04-02 09:04:15 +0000] [17502] [INFO] Booting worker with pid: 17502
-[2017-04-02 09:04:15 +0000] [17503] [INFO] Booting worker with pid: 17503
+[2017-04-05 10:52:56 +0000] [24008] [INFO] Starting gunicorn 19.7.1
+[2017-04-05 10:52:56 +0000] [24008] [INFO] Listening at: http://0.0.0.0:80 (24008)
+[2017-04-05 10:52:56 +0000] [24008] [INFO] Using worker: sync
+[2017-04-05 10:52:56 +0000] [24011] [INFO] Booting worker with pid: 24011
+[2017-04-05 10:52:56 +0000] [24018] [INFO] Booting worker with pid: 24018
+[2017-04-05 10:52:56 +0000] [24023] [INFO] Booting worker with pid: 24023
+[2017-04-05 10:52:56 +0000] [24024] [INFO] Booting worker with pid: 24024
+[2017-04-05 11:30:06 +0000] [24008] [INFO] Handling signal: term
+[2017-04-05 11:30:06 +0000] [24024] [INFO] Worker exiting (pid: 24024)
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[2017-04-05 11:30:06 +0000] [24011] [INFO] Worker exiting (pid: 24011)
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[2017-04-05 11:30:06 +0000] [24018] [INFO] Worker exiting (pid: 24018)
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[{'name': '许嵩 - 雅俗共赏.mp3'}, {'name': 'Axero - Trip.mp3'}]
+[2017-04-05 11:30:06 +0000] [24023] [INFO] Worker exiting (pid: 24023)
+[2017-04-05 11:30:06 +0000] [24008] [INFO] Shutting down: Master
+[2017-04-05 11:30:10 +0000] [24412] [INFO] Starting gunicorn 19.7.1
+[2017-04-05 11:30:10 +0000] [24412] [INFO] Listening at: http://0.0.0.0:80 (24412)
+[2017-04-05 11:30:10 +0000] [24412] [INFO] Using worker: sync
+[2017-04-05 11:30:10 +0000] [24417] [INFO] Booting worker with pid: 24417
+[2017-04-05 11:30:10 +0000] [24418] [INFO] Booting worker with pid: 24418
+[2017-04-05 11:30:10 +0000] [24419] [INFO] Booting worker with pid: 24419
+[2017-04-05 11:30:10 +0000] [24420] [INFO] Booting worker with pid: 24420
+[2017-04-06 11:08:48 +0000] [24412] [CRITICAL] WORKER TIMEOUT (pid:24420)
+[2017-04-06 11:08:48 +0000] [24420] [INFO] Worker exiting (pid: 24420)
+[{'name': 'Axero - Trip.mp3'}]
+[]
+Visitor loged in...
+[{'name': 'Jewel - Stay Here Forever.mp3'}]
+[{'name': 'Jewel - Stay Here Forever.mp3'}]
+[2017-04-06 11:08:48 +0000] [4120] [INFO] Booting worker with pid: 4120
