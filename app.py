@@ -80,7 +80,7 @@ def welcome():
 
 @app.route('/home')
 def home():
-    songs = read_music('')[:27]
+    songs = read_music('')[:7]
     print(songs)
     songs = [{'name':song['name'][:-4]} for song in songs]
     return render_template('home.html', songs=songs)
