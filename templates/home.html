@@ -15,7 +15,14 @@
     body {
       min-height: 75rem;
       padding-top: 4.5rem;
-    }
+    }  
+    .container{
+     text-align: center;
+   }
+    .center{
+     text-align: center;
+     height: 360px;
+   }
     </style>
   </head>
 
@@ -32,7 +39,7 @@
             <a class="nav-link" href="user">My music</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Share</a>
+            <a class="nav-link" href="http://yingshaoxo.cf:8888/main/">Share</a>
           </li>
         </ul>
         <!--form class="form-inline mt-2 mt-md-0">
@@ -45,6 +52,8 @@
 
     <div class="container">
       {% include "player.html" %}
+      <br>
+      <iframe class="container center" src="http://music.dsqndh.com" frameborder=0></iframe>
       <!--br><br><br>
       <div class="jumbotron">
         <h3>Welcome</h3>
