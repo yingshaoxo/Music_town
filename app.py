@@ -80,8 +80,8 @@ def welcome():
 
 @app.route('/home')
 def home():
-    songs = read_music('')[:7]
-    print(songs)
+    songs = read_music('')
+    #print(songs)
     songs = [{'name':song['name'][:-4]} for song in songs]
     return render_template('home.html', songs=songs)
 
@@ -118,7 +118,7 @@ def manage():
                 return redirect(url_for('manage'))
             write_music(username, songs)
     songs = read_music(username)
-    print(songs)
+    #print(songs)
     if len(songs) == 0:
         return redirect(url_for('user'))
     return render_template('main.html', page_name='manage', username=username, songs=songs)
@@ -202,10 +202,10 @@ def page_not_found(e):
     return redirect(url_for('home'))
 
 # start the server with the 'run()' method
-#if __name__ == '__main__':
-    #app.secret_key = 'some random string'
-    #APP.RUN(host='0.0.0.0', port=80)
+if __name__ == '__main__':
+    app.secret_key = 'some random string'
+    app.run(host='0.0.0.0', port=80)
 
 # for Gunicorn can use
-app.secret_key = 'some random string'
+#app.secret_key = 'some random string'
 #app.run(host='0.0.0.0', port=80)

@@ -1,10 +1,6 @@
 {
     "Visitor": {
-        "music": [
-            {
-                "name": "J.T.Peterson - Tales of Neverland\uff08inspiring).mp3"
-            }
-        ],
+        "music": [],
         "password": "Visitor"
     },
     "pea": {
@@ -32,6 +28,12 @@
             },
             {
                 "name": "\u8bb8\u5d69 \u6d1b\u5929\u4f9d - \u6df1\u591c\u4e66\u5e97.mp3"
+            },
+            {
+                "name": "Anan Ryoko - Refrain.mp3"
+            },
+            {
+                "name": "\u6211\u559c\u6b22\u4e0a\u4f60\u65f6\u7684\u5185\u5fc3\u6d3b\u52a8 - \u9648\u7eee\u8d1e.mp3"
             }
         ],
         "password": "1576570260"

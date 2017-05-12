@@ -1,7 +1,0 @@
-[2017-04-22 07:07:21 +0000] [14145] [INFO] Starting gunicorn 19.7.1
-[2017-04-22 07:07:21 +0000] [14145] [INFO] Listening at: http://0.0.0.0:80 (14145)
-[2017-04-22 07:07:21 +0000] [14145] [INFO] Using worker: sync
-[2017-04-22 07:07:21 +0000] [14150] [INFO] Booting worker with pid: 14150
-[2017-04-22 07:07:21 +0000] [14151] [INFO] Booting worker with pid: 14151
-[2017-04-22 07:07:21 +0000] [14152] [INFO] Booting worker with pid: 14152
-[2017-04-22 07:07:21 +0000] [14153] [INFO] Booting worker with pid: 14153
