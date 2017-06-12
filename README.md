@@ -1,1 +1,1 @@
-# This is a music place buit by Flask.
+# This is a music place built by Flask.
