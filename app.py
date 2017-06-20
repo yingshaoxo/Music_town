@@ -29,8 +29,11 @@ def in_or_out(username, a_dict=None):
         return 'Alread update'
 
 def read_music(username):
-    files = os.listdir('./static/music')
-    files = [os.path.abspath(os.path.join('./static/music', i)) for i in files]
+    path = './static/music'
+    if os.path.isdir(path) == False:
+        os.mkdir(path)
+    files = os.listdir(path)
+    files = [os.path.abspath(os.path.join(path, i)) for i in files]
     files = sorted(files, key=os.path.getctime, reverse=True)
     files = [os.path.basename(i) for i in files]
     music_files = [i for i in files if '.mp3' in i]
