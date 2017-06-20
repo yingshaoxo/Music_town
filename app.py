@@ -130,31 +130,31 @@ def upload_file():
         return redirect(url_for('home'))
     if request.method == 'POST':
         # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # if user does not select file, browser also submit a empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and '.mp3' in file.filename:
-            filename = file.filename
-            file.save(os.path.join('./static/music', '@w@'+filename))           
-            temp_name = os.path.abspath('./static/music/@w@{}'.format(filename))
-            try:
-                p = subprocess.Popen(['ffmpeg -i "{name}" -ac 1 -ab 64k "{real_name}"'.format(name=temp_name, real_name=temp_name.replace('@w@', ''))], shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-                p.wait()
-                p.communicate()
-                p.kill()
-                os.remove(temp_name)
-            except Exception as e:
-                print(e)
-                os.rename(temp_name, temp_name.replace('@w@', ''))
-            write_music(session.get('username'), filename)
-            print('Uploaded a mp3')
-            flash('Uploaded')
-            return redirect(url_for('user'))
+        uploaded_files = request.files.getlist("file[]")
+        for file in uploaded_files:
+
+            #file = request.files['file']
+            # if user does not select file, browser also submit a empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+                return redirect(request.url)
+            if file and '.mp3' in file.filename:
+                filename = file.filename
+                file.save(os.path.join('./static/music', '@w@'+filename))           
+                temp_name = os.path.abspath('./static/music/@w@{}'.format(filename))
+                try:
+                    p = subprocess.Popen(['ffmpeg -i "{name}" -ac 1 -ab 64k "{real_name}"'.format(name=temp_name, real_name=temp_name.replace('@w@', ''))], shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+                    p.wait()
+                    p.communicate()
+                    p.kill()
+                    os.remove(temp_name)
+                except Exception as e:
+                    print(e)
+                    os.rename(temp_name, temp_name.replace('@w@', ''))
+                write_music(session.get('username'), filename)
+                print('Uploaded a mp3')
+                flash('Uploaded')
+        return redirect(url_for('user'))
     return render_template('main.html', page_name='upload', username=username)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -204,7 +204,7 @@ def page_not_found(e):
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.secret_key = 'some random string'
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=5000)
 
 # for Gunicorn can use
 #app.secret_key = 'some random string'
