@@ -207,7 +207,7 @@ def page_not_found(e):
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.secret_key = 'some random string'
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 # for Gunicorn can use
 #app.secret_key = 'some random string'
