@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    /*margin-bottom: 50px;*/
+}
+.left {
+    text-align: left;
+}
+</style>
+<body>
+
+    <div class="container left">
+        <div id="player1" class="aplayer"></div>
+    </div>
+
+    <script src="../static/player/APlayer.min.js"></script>
+
+<script>
+    var ap1 = new APlayer({
+        element: document.getElementById('player1'),
+        narrow: false,
+        autoplay: false,
+        showlrc: false,
+        mutex: true,
+        preload: 'none',
+        theme: '#ff6600',
+        mode: 'random',
+        music: [
+{% for dict_song in songs %} 
+             {
+                title: '{{dict_song["name"]}}',
+                author: '',
+                url: '../static/music/{{dict_song["name"]}}.mp3',
+            },
+{% endfor %}
+         ]
+    });
+</script>
+
+</body>
+</html>
