@@ -171,7 +171,10 @@ def upload_file():
                     p.wait()
                     p.communicate()
                     p.kill()
-                    os.remove(temp_name)
+                    if os.path.exists(temp_name.replace('@w@', '')):
+                        os.remove(temp_name)
+                    else:
+                        os.rename(temp_name, temp_name.replace('@w@', ''))
                 except Exception as e:
                     print(e)
                     os.rename(temp_name, temp_name.replace('@w@', ''))
