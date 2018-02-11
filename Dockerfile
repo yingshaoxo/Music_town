@@ -7,4 +7,4 @@ RUN chmod +x /usr/src/music_town/docker_run.sh
 
 EXPOSE 2016
 
-CMD ["bash", "/usr/src/music_town/docker_run.sh"]
+CMD ["bash", "/usr/src/music_town/tool.sh", "docker_run"]
