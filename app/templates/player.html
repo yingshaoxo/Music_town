@@ -17,14 +17,24 @@
 <body>
 
     <div class="container left">
-        <div id="player1" class="aplayer"></div>
+
+        {% if player_index %}
+            <div id="player{{ player_index|string }}" class="aplayer"></div>
+        {% else %}
+            <div id="player1" class="aplayer"></div>
+        {% endif %}
     </div>
 
     <script src="../static/player/APlayer.min.js"></script>
 
 <script>
+    {% if player_index %}
+    var ap{{ player_index|string }} = new APlayer({
+        element: document.getElementById('player{{ player_index|string }}'),
+    {% else %}
     var ap1 = new APlayer({
         element: document.getElementById('player1'),
+    {% endif %}
         narrow: false,
         autoplay: false,
         showlrc: false,

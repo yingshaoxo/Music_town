@@ -5,28 +5,38 @@ import json
 import os
 import random
 
+
 import env as Env
 env = Env.Database()
 MUSIC_DIR = os.path.expanduser('~/Music')
+file_name = os.path.join(env.userdata_folder, 'users.json')
+
+def get_json():
+    with open(file_name, 'r') as f:
+        text = f.read()
+    return json.loads(text)
+
+def write_json(a_dict):
+    with open(file_name, 'w') as f:
+        f.write(json.dumps(a_dict, sort_keys=True, indent=4))
+
+if os.path.exists(env.userdata_folder) == False:
+    os.mkdir('userdata')
+if os.path.exists(file_name) == False:
+    write_json({
+        "Visitor": {
+            "music": [],
+            "password": "Visitor"
+        },
+        "yingshaoxo": {
+            "music": [],
+            "password": "yingshaoxo"
+        }
+    })
+
 
 # Just use json as datebase
 def in_or_out(username, a_dict=None):
-    file_name = os.path.join(env.userdata_folder, 'users.json')
-   
-    def get_json():
-        with open(file_name, 'r') as f:
-            text = f.read()
-        return json.loads(text)
-    
-    def write_json(a_dict):
-        with open(file_name, 'w') as f:
-            f.write(json.dumps(a_dict, sort_keys=True, indent=4))
- 
-    if os.path.exists(env.userdata_folder) == False:
-        os.mkdir('userdata')
-    if os.path.exists(file_name) == False:
-        write_json({'yingshaoxo':{'password':'1576570260'}})
-    
     all_ = get_json()
     if a_dict == None: # if no data need store, retuen the imformation of the user
         return all_.get(username)
@@ -34,6 +44,10 @@ def in_or_out(username, a_dict=None):
         all_.update({username:a_dict})
         write_json(all_)
         return 'Alread update'
+
+def get_users():
+    all_ = get_json()
+    return all_.keys()
 
 def read_music(username):
     path = os.path.join(env.current_dir, 'static/music')
@@ -104,10 +118,15 @@ def welcome():
 
 @app.route('/home')
 def home():
-    songs = read_music('')
-    #print(songs)
-    songs = [{'name':song['name'][:-4]} for song in songs]
-    return render_template('home.html', songs=songs)
+    users = get_users()
+    users_song = []
+    for user in users:
+        songs = read_music(user)
+        #print(songs)
+        songs = [{'name':song['name'][:-4]} for song in songs]
+        if len(songs):
+            users_song.append(songs)
+    return render_template('home.html', users_song=users_song)
 
 @app.route('/user')
 def user():
@@ -227,6 +246,7 @@ def login():
 @app.errorhandler(404)
 def page_not_found(e):
     return redirect(url_for('home'))
+
 
 # start the server with the 'run()' method
 if __name__ == '__main__':

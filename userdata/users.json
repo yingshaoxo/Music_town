@@ -1,9 +1,18 @@
 {
     "Visitor": {
-        "music": [],
+        "music": [
+            {
+                "name": "Akeboshi - wind(ワインド).mp3"
+            }
+        ],
         "password": "Visitor"
     },
+    "pea": {
+        "music": [],
+        "password": "pea"
+    },
     "yingshaoxo": {
-        "password": "1576570260"
+        "music": [],
+        "password": "yingshaoxo"
     }
 }

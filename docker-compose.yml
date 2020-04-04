@@ -1,0 +1,11 @@
+version: '2.2'
+services:
+    music_town:
+        image: yingshaoxo/music_town
+        container_name: music_town
+        ports:
+            - 2016:2016
+        volumes:
+            - ~/music_town/music:/usr/src/music_town/app/static/music
+            - ~/music_town/userdata:/usr/src/music_town/userdata
+        restart: unless-stopped

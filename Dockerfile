@@ -1,11 +1,10 @@
 FROM python:3.5
 
+RUN pip install --no-cache-dir flask
+
 COPY . /usr/src/music_town/
 
-Run apt-get install -y ffmpeg
-RUN pip install --no-cache-dir -r /usr/src/music_town/requirements.txt
-
-RUN chmod +x /usr/src/music_town/docker_run.sh
+RUN chmod +x /usr/src/music_town/tool.sh
 
 EXPOSE 2016
 

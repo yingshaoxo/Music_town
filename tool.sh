@@ -10,7 +10,7 @@ run() {
 }
 
 docker_run() {
-    python3.6 /usr/src/webchat/app/app.py
+    python /usr/src/music_town/app/app.py
 }
 
 pull() {
