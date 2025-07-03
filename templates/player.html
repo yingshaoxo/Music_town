@@ -17,10 +17,39 @@
 .left {
     text-align: left;
 }
+
+
+#next_song_button {
+    position: relative;
+    padding: 10px 20px; 
+    background-color: #555; 
+    color: white;
+    border: none;
+    border-radius: 25px; 
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.3;
+}
+
+#next_song_button:hover {
+    background-color: #888; 
+    opacity: 1.0;
+}
+
+#next_song_button:active {
+    transform: translateY(1px); 
+}
 </style>
 <body>
 
     <div class="container left">
+        <div style="width: 100%; display:flex;flex-direction:row;justify-content:center;align-items:center;">
+            <button id="next_song_button" style="">Next_Song</button>
+        </div>
 
         {% if player_index %}
             <div id="player{{ player_index|string }}" class="aplayer"></div>
@@ -58,6 +87,12 @@
          ]
     });
     window.scrollTo(0, 0); 
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('next_song_button').addEventListener('click', function() {
+            ap2.setMusic(ap2.nextRandomNum());
+        });
+    });
 </script>
 
 </body>
