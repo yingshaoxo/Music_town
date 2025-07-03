@@ -318,6 +318,11 @@ def page_not_found(e):
         return redirect(url_for('home'))
 
     try:
+        if len(all_songs) == 0:
+            songs = read_music("")
+            all_songs = [{'name': song['name'][:-4]} for song in songs]
+        if len(all_songs) == 0:
+            raise Exception("no songs in ./static/music folder")
         song = random.choice(all_songs)
         file_path = MUSIC_DIR + "/" + song['name'] + '.mp3'
         print(file_path)
