@@ -4,9 +4,17 @@ import jinja2.ext
 import subprocess
 import json
 import os
+from os.path import join, isdir, abspath, basename, getctime
 import random
 import sys
 
+Use_OutSide_Folder = False
+arguments = sys.argv[1:]
+if len(arguments) > 0:
+    the_music_path = arguments[0]
+    if os.path.exists(the_music_path):
+        Use_OutSide_Folder = True
+        the_music_path = os.path.abspath(the_music_path)
 
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
@@ -16,11 +24,19 @@ def resource_path(relative_path):
 
 CURRENT_DIR = resource_path(".")
 STATIC_DIR = os.path.join(CURRENT_DIR, 'static')
+MUSIC_DIR = os.path.join(CURRENT_DIR, 'music')
 TEMPLATE_DIR = os.path.join(CURRENT_DIR, 'templates')
 USERDATA_FOLDER = os.path.join(CURRENT_DIR, 'userdata')
 if not os.path.exists(USERDATA_FOLDER):
     os.mkdir(USERDATA_FOLDER)
 USERDATA_FILE = os.path.join(USERDATA_FOLDER, 'users.json')
+
+
+if Use_OutSide_Folder == True:
+    the_link_music_folder = os.path.join(MUSIC_DIR, "linked_music_folder")
+    os.system("rm -fr '{path}'".format(path=the_link_music_folder))
+    os.system("mkdir -p '{path}'".format(path=the_link_music_folder))
+    os.system("ln -s '{source_path}' '{target_path}'".format(source_path=the_music_path, target_path=the_link_music_folder))
 
 
 def get_json():
@@ -63,30 +79,52 @@ def get_users():
     return all_.keys()
 
 
-def read_music(username):
-    path = os.path.join(CURRENT_DIR, 'static/music')
-    if os.path.isdir(path) == False:
-        os.mkdir(path)
-    files = os.listdir(path)
-    files = [os.path.abspath(os.path.join(path, i)) for i in files]
-    files = sorted(files, key=os.path.getctime, reverse=True)
-    files = [os.path.basename(i) for i in files]
-    music_files = [i for i in files if '.mp3' in i]
+def find_music_files(path, username=None):
+    music_files = []
 
-    if username != '':
+    for root, dirs, files in os.walk(path, followlinks=True):
+        for file in files:
+            if file.endswith('.mp3') or file.endswith(".m4a"):
+                full_path = abspath(join(root, file))
+                music_files.append(full_path)
+
+    if not music_files:
+        return []
+
+    # Sort by creation time (newest first)
+    music_files.sort(key=getctime, reverse=True)
+    new_music_files = []
+    for one in music_files:
+        if "linked_music_folder" in one:
+            new_music_files.append(one[len(MUSIC_DIR) + len("music/"):])
+        else:
+            new_music_files.append(basename(one))
+    music_files = new_music_files
+
+    if username:
         userinfo = in_or_out(username)
-        if userinfo == None:
+        if not userinfo:
             print("No userinfo")
             return []
+
         usermusic = userinfo.get('music')
-        if usermusic == None:
+        if not usermusic:
             print("No usermusic")
             return []
-        usermusic_name = [i['name'] for i in usermusic]
-        music_files = [i for i in music_files if i in usermusic_name]
-        print(usermusic)
 
-    songs = [{'name': song} for song in music_files]
+        usermusic_names = [i['name'] for i in usermusic]
+        music_files = [f for f in music_files if f in usermusic_names]
+
+    return [{'name': song} for song in music_files]
+
+
+def read_music(username):
+    path = join(CURRENT_DIR, 'static/music')
+    if not isdir(path):
+        os.mkdir(path)
+        return []
+    songs = find_music_files(path, username)
+    #print(songs)
     return songs
 
 
@@ -173,8 +211,12 @@ def manage():
             delete_id = int(btn_value[len('Delete'):])-1
             songs = read_music(username)
             try:
-                os.remove(os.path.join(os.path.join(CURRENT_DIR, 'static/music'), songs[delete_id]['name']))
-                del songs[delete_id]
+                a_music_path = os.path.join(os.path.join(CURRENT_DIR, 'static/music'), songs[delete_id]['name'])
+                if "linked_music_folder" in songs[delete_id]['name']:
+                    raise Exception("We will not delete linked music folder:", a_music_path)
+                else:
+                    os.remove(a_music_path)
+                    del songs[delete_id]
             except:
                 return redirect(url_for('manage'))
             write_music(username, songs)

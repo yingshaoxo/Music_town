@@ -1,0 +1,1 @@
+python3 app.py "/home/yingshaoxo/Disk/Sync_Folder/Yingshaoxo_Data/Additional/Music"
