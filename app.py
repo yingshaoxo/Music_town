@@ -1,5 +1,5 @@
 # import the Flask class from the flask module
-from flask import Flask, render_template, redirect, url_for, request, session, flash, send_from_directory
+from flask import Flask, render_template, redirect, url_for, request, session, flash, send_from_directory, send_file
 import jinja2.ext
 import subprocess
 import json
@@ -24,7 +24,7 @@ def resource_path(relative_path):
 
 CURRENT_DIR = resource_path(".")
 STATIC_DIR = os.path.join(CURRENT_DIR, 'static')
-MUSIC_DIR = os.path.join(CURRENT_DIR, 'music')
+MUSIC_DIR = os.path.join(STATIC_DIR, 'music')
 TEMPLATE_DIR = os.path.join(CURRENT_DIR, 'templates')
 USERDATA_FOLDER = os.path.join(CURRENT_DIR, 'userdata')
 if not os.path.exists(USERDATA_FOLDER):
@@ -96,7 +96,7 @@ def find_music_files(path, username=None):
     new_music_files = []
     for one in music_files:
         if "linked_music_folder" in one:
-            new_music_files.append(one[len(MUSIC_DIR) + len("music/"):])
+            new_music_files.append(one[len(MUSIC_DIR)-1:])
         else:
             new_music_files.append(basename(one))
     music_files = new_music_files
@@ -162,8 +162,11 @@ def welcome():
     return redirect(url_for('home'))
 
 
+all_songs = []
 @app.route('/home')
 def home():
+    global all_songs
+
     users = get_users()
     users_song = []
     for user in users:
@@ -178,6 +181,7 @@ def home():
     songs = [{'name': song['name'][:-4]} for song in songs]
     if len(songs):
         users_song.append(songs)
+        all_songs = songs
 
     return render_template('home.html', users_song=users_song)
 
@@ -308,7 +312,26 @@ def login():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return redirect(url_for('home'))
+    global all_songs, Use_OutSide_Folder
+
+    if Use_OutSide_Folder == False:
+        return redirect(url_for('home'))
+
+    try:
+        song = random.choice(all_songs)
+        file_path = MUSIC_DIR + "/" + song['name'] + '.mp3'
+        print(file_path)
+
+        if not os.path.exists(file_path):
+            return "File not found", 404
+
+        return send_file(
+            file_path,
+            mimetype='audio/mpeg',
+            as_attachment=False
+        )
+    except Exception as e:
+        return str(e), 500
 
 
 # start the server with the 'run()' method

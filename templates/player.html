@@ -88,11 +88,18 @@
     });
     window.scrollTo(0, 0); 
 
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('next_song_button').addEventListener('click', function() {
-            ap2.setMusic(ap2.nextRandomNum());
+    try {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('next_song_button').addEventListener('click', function() {
+                ap2.setMusic(ap2.nextRandomNum());
+                ap2.on('ended', function() {
+                    ap2.setMusic(ap2.nextRandomNum());
+                })
+            });
         });
-    });
+    } catch (error) {
+        console.error("error:", error.message); 
+    }
 </script>
 
 </body>
